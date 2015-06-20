@@ -1,0 +1,19 @@
+﻿extends ../shared/layout
+
+block main-content
+    table.table.table-bordered.table-striped.table-hover
+        caption My active events
+        thead
+            tr
+                th Title
+                th Description        
+                th Evaluation   
+                th Date
+        tbody        
+            each event in events
+                tr
+                    td 
+                        a(href="/events/#{event._id}") #{event.title}               
+                    td #{event.description}                   
+                    td #{event.evaluation}
+                    td #{event.date}

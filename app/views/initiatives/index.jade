@@ -1,0 +1,27 @@
+extends ../shared/layout
+
+block main-content
+    include ../shared/mixins/form_group_input.jade
+    table.table.table-bordered.table-striped.table-hover
+        caption Initiatives
+        thead
+            tr                            
+                th.text-center Name               
+                th.text-center Edit            
+                th.text-center Delete
+        tbody                    
+            each initiative in initiatives
+                tr                                               
+                    td.text-center #{initiative.name}
+                    td.text-center
+                        a(href="/initiatives/#{initiative._id}/edit" class="btn btn-warning")
+                            span(class="glyphicon glyphicon-pencil" aria-hidden="true")
+                    td.text-center
+                        button(type="button" class="btn btn-danger")
+                            span(class="glyphicon glyphicon-remove" aria-hidden="true")
+    form(method="post" class="form-horizontal well")
+        fieldset
+            +formGroupInput('name', 'name', 'Initiative name', true)                
+            .col-lg-10.col-lg-offset-2
+                input(type="submit" class="btn btn-default" value="Create new")
+                                                                                                                            

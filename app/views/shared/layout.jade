@@ -1,0 +1,43 @@
+doctype
+html
+    head
+        title Academy events System
+        include styles
+    body
+        header#navigation.container
+            .navbar.navbar-default.navbar-fixed-top
+                .navbar-header
+                    a.navbar-brand(href="/") Academy Events System
+                .navbar-collapse.collapse
+                    ul.nav.navbar-nav
+                        li
+                            a(href="/") Home
+                        if (currentUser)
+                            li
+                                a(href="/profile")
+                                    span(class="glyphicon glyphicon-user" aria-hidden="true")
+                                    span  my profile                            
+                            li
+                                a(href="/myevents") My active events                                                    
+                            li
+                                a(href="/events/new") Add event 
+                            li
+                                a(href="/initiatives") Initiatives
+                            li                            
+                                a(href="/logout") Logout                                                        
+                        else
+                            li
+                                a(href="/register") Register
+                            li
+                                a(href="/login") Login
+        #main-body.container
+            if (errorMessage)
+                .alert.alert-danger #{errorMessage}
+
+            block main-content
+
+        footer
+            p.text-center
+                | &copy; Academy events 2014
+
+        include scripts

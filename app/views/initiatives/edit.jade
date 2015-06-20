@@ -1,0 +1,10 @@
+extends ../shared/layout
+
+block main-content    
+    include ../shared/mixins/form_group_input_filled.jade
+    .row
+        form(class="form-horizontal well")
+            fieldset
+                +formGroupInputFilled('name', 'name', initiative.name, true)                
+                .col-lg-10.col-lg-offset-2
+                    input(type="reset" class="btn btn-default" value="Edit")                                   

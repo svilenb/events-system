@@ -1,0 +1,14 @@
+extends ../shared/layout
+block main-content
+    form(method="post" class="form-horizontal well")
+        fieldset
+            .form-group
+                label(for="username" class="col-lg-2 control-label") Username
+                .col-lg-10
+                    input(id="username" class="form-control" type="text" name="username" placeholder="Username" required="required")        
+            .form-group
+                label(for="password" class="col-lg-2 control-label") Password
+                .col-lg-10
+                    input(id="password" class="form-control" type="password" name="password" placeholder="Password" required="required")            
+            .col-lg-10.col-lg-offset-2
+                input(type="submit" class="btn btn-primary" value="login")

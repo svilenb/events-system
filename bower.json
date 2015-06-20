@@ -1,0 +1,24 @@
+{
+  "name": "TelerikAcademyEventsSystem",
+  "version": "0.0.2",
+  "authors": [
+    "svilenbonev"
+  ],
+  "description": "Node.js web application for academic events system",
+  "main": "server.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.2",
+    "bootstrap": "~3.3.1",
+    "knockout": "~3.3.0"
+  }
+}

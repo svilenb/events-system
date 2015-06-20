@@ -1,0 +1,22 @@
+extends ../shared/layout
+
+block main-content    
+    table.table.table-bordered.table-striped.table-hover
+        thead
+            tr
+                th.col-md-1 Title
+                th.col-md-1 Category
+                th.col-md-1 Season
+                th.col-md-1 Initiative
+                th.col-md-4 Description                
+                th.col-md-2 Evaluation   
+        tbody
+            each event in events                
+                tr
+                    td.col-md-1
+                        a(href="/events/#{event._id}") #{event.title}
+                    td.col-md-2 #{event.category.name}
+                    td.col-md-2 #{event.type.season.name}
+                    td.col-md-2 #{event.type.initiative.name}
+                    td.col-md-4 #{event.description}                                       
+                    td.col-md-1 #{event.evaluation}                        

@@ -1,0 +1,14 @@
+﻿extends ../shared/layout
+
+block main-content
+    table.table.table-bordered
+        tr
+            th Title
+            th Description        
+            th Evaluation   
+        each event in events
+            tr
+                td 
+                    a(href="/events/details/#{event._id}") #{event.title}
+                td #{event.description}                   
+                td #{event.evaluation}

@@ -1,0 +1,16 @@
+extends ../shared/layout
+
+block main-content
+    include ../shared/mixins/form_group_input.jade
+    include ../shared/mixins/form_group_select.jade
+    form(method="post" action='/events' class="form-horizontal well")
+        fieldset
+            +formGroupInput('title', 'title', 'Title', true)
+            +formGroupInput('description', 'description', 'Description', true)
+            +formGroupInput('latitude', 'latitude', 'Latitude', true)
+            +formGroupInput('longitude', 'longitude', 'Longitude', true)        
+            +formGroupSelect('initiative', 'initiative', initiatives, true)
+            +formGroupSelect('season', 'season', seasons, required)
+            +formGroupSelect('category', 'category', categories, required)        
+            .col-lg-10.col-lg-offset-2
+                input(type="submit" class="btn btn-lg" value="Create")

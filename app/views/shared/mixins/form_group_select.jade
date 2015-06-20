@@ -1,0 +1,12 @@
+mixin formGroupSelect(id, name, options, required)
+    .form-group
+        label(for=id class="col-lg-2 control-label")= name
+        .col-lg-10
+            if required
+                select(id=id class="form-control" name=name required="required")                
+                    each option in options
+                        option= option
+            else
+                select(id=id class="form-control" name=name)
+                    each option in options
+                        option= option

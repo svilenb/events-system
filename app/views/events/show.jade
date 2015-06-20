@@ -1,0 +1,16 @@
+﻿extends ../shared/layout
+
+block main-content
+    .row 
+        p Title: #{event.title}
+        p Location: #{event.description}
+        //-p Creator:  #{event.user.username}
+        //-p User stats: #{event.user.eventPoints}
+        p events stats: #{event.evaluation}
+        p Events date: #{event.date}
+        p Events type season: #{event.type.season.name}
+        p Events type initiative: #{event.type.initiative.name}
+        p Comments:
+        ul 
+            each comment in event.comments
+                li #{comment}                
