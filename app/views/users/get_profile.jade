@@ -51,17 +51,4 @@ block main-content
                     .col-log-10
                         input(type="file" name="avatar")                
                 .col-lg-10.col-lg-offset-2                    
-                    input(type="submit" class="btn btn-primary" value="Change")
-        
-    table.table.table-bordered
-        caption Created events by me
-        tr
-            th Title
-            th Description        
-            th Evaluation   
-        each event in myEvents
-            tr
-                td 
-                    a(href="/events/details/#{event._id}") #{event.title}
-                td #{event.description}                   
-                td #{event.evaluation}    
+                    input(type="submit" class="btn btn-primary" value="Change")            

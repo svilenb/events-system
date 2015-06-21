@@ -6,6 +6,7 @@ var Controller = require('locomotive').Controller;
 var eventsController = new Controller();
 var isAuthenticated = require('../utilities/auth').isAuthenticated;
 var async = require('async');
+var moment = require('moment');
 var _ = require('underscore');
 
 eventsController.getCreateEvent = function() {
@@ -74,9 +75,10 @@ eventsController.before('create', function(next) {
             console.log(err);
         }
 
-console.log(category);
+        console.log(category);
 
         self.category = category;
+        next();
     });
 });
 
@@ -115,24 +117,6 @@ eventsController.show = function() {
         self.event.description = event.description;
 
         console.log('self event', JSON.stringify(self.event));
-        self.render();
-    });
-};
-
-eventsController.before('myEvents', function(next) {
-    isAuthenticated(this.req, this.res, next);
-});
-
-eventsController.myEvents = function() {
-    var userId = this.req.user._id;
-    var self = this;
-
-    eventsData.getActiveEvents(userId, function(err, events) {
-        if (err) {
-            return self.next(err);
-        }
-
-        self.events = events;
         self.render();
     });
 };

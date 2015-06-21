@@ -118,14 +118,38 @@ module.exports = {
             .lean(true)
             .exec(callback);
     },
-    getActiveEvents: function(userId, callback) {
+    getUserActiveEvents: function(userId, callback) {
         var currentDate = new Date();
         Event.find()
             .where('user')
             .equals(userId)
             .where('date')
             .gte(currentDate)
+            .populate('user category')
             .sort('date')
-            .exec(callback);
+            .exec(function(err, events) {
+                if (err) {
+                    return callback(err);
+                }
+
+                async.parallel([
+                    function(callback) {
+                        Initiative.populate(events, {
+                            path: 'type.initiative'
+                        }, callback);
+                    },
+                    function(callback) {
+                        Season.populate(events, {
+                            path: 'type.season'
+                        }, callback);
+                    }
+                ], function(err) {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    callback(null, events);
+                });
+            });
     }
 };

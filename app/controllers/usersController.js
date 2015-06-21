@@ -7,12 +7,7 @@ var encryption = require('../utilities/encryption');
 var rootPath = require('../constants').rootPath;
 var isAuthenticated = require('../utilities/auth').isAuthenticated;
 var eventsData = require('../data/events');
-
-usersController.after('*', function(err, req, res, next) {
-    if (err) {
-        this.render('pages/error');
-    }
-});
+var moment = require('moment');
 
 usersController.getLogin = function() {
     this.render();
@@ -107,21 +102,38 @@ usersController.postRegister = function() {
     });
 };
 
-usersController.getProfile = function() {
-    var self = this;
-    var req = this.req;
-    var next = this.next;
+usersController.before('activeEvents', function(next) {
+    isAuthenticated(this.req, this.res, next);
+});
 
-    eventsData.getActiveEvents(req.user._id, function(err, resultEvents) {
+usersController.activeEvents = function() {
+    var userId = this.param('userId');
+    var self = this;
+
+    eventsData.getUserActiveEvents(userId, function(err, events) {
         if (err) {
-            console.log('Failed to get events: ' + err);
-            return next(err);
+            return self.next(err);
         }
 
-        self.user = req.user;
-        self.myEvents = resultEvents;
+        self.moment = moment;
+        self.events = events;
         self.render();
     });
 };
+
+usersController.before('getProfile', function(next) {
+    isAuthenticated(this.req, this.res, next);
+});
+
+usersController.getProfile = function() {
+    var req = this.req;
+
+    this.user = req.user;
+    this.render();
+};
+
+usersController.after('*', function() {
+    this.render('pages/error');
+});
 
 module.exports = usersController;

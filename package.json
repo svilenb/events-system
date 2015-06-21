@@ -20,6 +20,7 @@
     "jade": "^1.11.0",
     "locomotive": "0.4.x",
     "method-override": "^2.3.3",
+    "moment": "^2.10.3",
     "mongoose": "^4.0.5",
     "morgan": "^1.6.0",
     "passport": "^0.2.2",

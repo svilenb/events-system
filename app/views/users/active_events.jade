@@ -1,0 +1,5 @@
+﻿extends ../shared/layout
+
+block main-content
+    include ../shared/mixins/events_table.jade                    
+    +createEventsTable(events, 'User active events')     
