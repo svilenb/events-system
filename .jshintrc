@@ -1,5 +1,5 @@
 {
   "undef": true,
   "unused": true,
-  "predef": [ "require", "module", "__dirname", "console", "process"]
+  "predef": [ "require", "module", "__dirname", "console", "process", "requirejs", "define", "document"]
 }

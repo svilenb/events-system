@@ -57,7 +57,7 @@ module.exports = {
             }
         });
     },
-    updateById: function(id, data, callback) {
+    update: function(id, data, callback) {
         User.update({
             _id: id
         }, {

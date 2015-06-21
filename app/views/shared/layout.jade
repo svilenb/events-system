@@ -16,11 +16,11 @@ html
                         a(href="/" class="navbar-brand") 
                             img(alt="Events System" src="/img/brand.png" class="img-responsive" width="25" height="25")
                     div(id="navbar-collapse-main" class="navbar-collapse collapse")
-                        ul.nav.navbar-nav
-                            li.active
+                        ul(id="myTabs" class="nav navbar-nav")
+                            li(id="home")
                                 a(href="/") Home #[span.sr-only (current)]                            
                             if (currentUser)
-                                li.dropdown
+                                li(id="user" class="dropdown")
                                     a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") #[span(class="glyphicon glyphicon-user" aria-hidden="true")] user #[span.carret]
                                     ul.dropdown-menu
                                         li
@@ -37,9 +37,9 @@ html
                                         li                            
                                             a(href="/logout") Logout                                                                                        
                             else
-                                li
+                                li(id="register")
                                     a(href="/register") Register
-                                li
+                                li(id="login")
                                     a(href="/login") Login
                         if (currentUser)                    
                             p.navbar-text Signed in as  #[a(href="/" class="navbar-link") #{currentUser.username}]                        
@@ -53,4 +53,4 @@ html
             p.text-center
                 | &copy; Academy events 2014
 
-        include scripts
+        block scripts
