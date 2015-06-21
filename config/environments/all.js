@@ -23,7 +23,7 @@ module.exports = function() {
         this.use(logger('dev'));
         this.use(errorHandler());
     }
-        
+
     this.use(poweredBy('Locomotive'));
     this.use(favicon(__dirname + '/../../public/favicon.ico'));
     this.use(express.static(__dirname + '/../../public'));
