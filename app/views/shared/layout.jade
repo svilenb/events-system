@@ -13,12 +13,12 @@ html
                             span.icon-bar
                             span.icon-bar
                             span.icon-bar
-                        a(href="#" class="navbar-brand") 
+                        a(href="/" class="navbar-brand") 
                             img(alt="Events System" src="/img/brand.png" class="img-responsive" width="25" height="25")
                     div(id="navbar-collapse-main" class="navbar-collapse collapse")
                         ul.nav.navbar-nav
                             li.active
-                                a(href="#") Home #[span.sr-only (current)]                            
+                                a(href="/") Home #[span.sr-only (current)]                            
                             if (currentUser)
                                 li.dropdown
                                     a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") #[span(class="glyphicon glyphicon-user" aria-hidden="true")] user #[span.carret]
@@ -26,11 +26,14 @@ html
                                         li
                                             a(href="/profile") My profile
                                         li
-                                            a(href="/user/#{currentUser._id}/activeEvents") My active events                                                    
+                                            a(href="/user/#{currentUser._id}/activeEvents") My active events
+                                        li(role="separator" class="divider")                                            
                                         li
                                             a(href="/events/new") Create event 
+                                        li(role="separator" class="divider")    
                                         li
                                             a(href="/initiatives") Initiatives
+                                        li(role="separator" class="divider")
                                         li                            
                                             a(href="/logout") Logout                                                                                        
                             else
@@ -39,7 +42,7 @@ html
                                 li
                                     a(href="/login") Login
                         if (currentUser)                    
-                            p.navbar-text Signed in as  #[a(href="#" class="navbar-link") #{currentUser.username}]                        
+                            p.navbar-text Signed in as  #[a(href="/" class="navbar-link") #{currentUser.username}]                        
         #main-body.container
             if (errorMessage)
                 .alert.alert-danger #{errorMessage}
