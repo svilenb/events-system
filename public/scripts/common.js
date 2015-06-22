@@ -8,6 +8,9 @@ define(['jquery', 'bootstrap'], function($) {
                     $(this).parent('li').tab('show');
                 });
             });
+        },
+        showActiveTab: function (id) {
+            $(id).tab('show');
         }
     };
 });

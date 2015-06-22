@@ -42,7 +42,7 @@ html
                                 li(id="login")
                                     a(href="/login") Login
                         if (currentUser)                    
-                            p.navbar-text Signed in as  #[a(href="/" class="navbar-link") #{currentUser.username}]                        
+                            p.navbar-text Signed in as  #[a(href="/profile" class="navbar-link") #{currentUser.username}]                        
         #main-body.container
             if (errorMessage)
                 .alert.alert-danger #{errorMessage}

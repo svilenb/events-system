@@ -25,7 +25,7 @@ usersController.postLogin = function() {
 
         if (!user) {
             req.session.error = 'Invalid username or password!';
-            this.redirect('/login');
+            self.redirect('/login');
         }
 
         req.logIn(user, function(err) {
