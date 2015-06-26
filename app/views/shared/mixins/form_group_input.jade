@@ -1,8 +1,8 @@
-mixin formGroupInput(id, name, placeholder, required)
+mixin formGroupInput(type, id, name, placeholder, required)
     .form-group
         label(for=id class="col-lg-2 control-label")= placeholder
         .col-lg-10
             if required
-                input(id=id class="form-control" type="text" name=name placeholder=placeholder required="required")
+                input(id=id class="form-control" type=type name=name placeholder=placeholder required="required")
             else
                 input(id=id class="form-control" type="text" name=name placeholder=placeholder)

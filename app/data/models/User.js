@@ -65,7 +65,7 @@ module.exports.init = function() {
 
     userSchema.path('username').validate(function(value) {
         var correctLength = this.minUsernameLength <= value.length && value.length <= this.maxUsernameLength;
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_ .';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_.';
         var correctCharacters = true;
 
         for (var i = 0; i < value.length; i += 1) {
@@ -74,7 +74,7 @@ module.exports.init = function() {
             }
         }
 
-        return correctLength && correctCharacters;
+        return (correctLength && correctCharacters);
     });
 
     mongoose.model('User', userSchema);

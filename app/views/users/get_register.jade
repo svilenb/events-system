@@ -2,29 +2,24 @@ extends ../shared/layout
 
 block main-content
     include ../shared/mixins/form_group_input.jade
-    
+    include ../shared/mixins/form_group_input_validated.jade
     form(method="post", enctype="multipart/form-data" class="form-horizontal well")
         fieldset
-            +formGroupInput('username', 'username', 'Username', true)
-            +formGroupInput('firstName', 'firstName', 'First name', true)
-            +formGroupInput('lastName', 'lastName', 'Last name', true)
-            +formGroupInput('phoneNumber', 'phoneNumber', 'Phone number', false)        
-            .form-group
+            +formGroupInputValidated('text', 'username', 'username', 'Username', 'isUsernameValid', true)            
+            +formGroupInputValidated('text', 'firstName', 'firstName', 'First name', 'isFirstNameValid', true)
+            +formGroupInputValidated('text', 'lastName', 'lastName', 'Last name', 'isLastNameValid', true)
+            +formGroupInput('tel', 'phoneNumber', 'phoneNumber', 'Phone number', 'isPhoneNumbervalid', false)        
+            div(data-bind="css: { 'has-success' : isEmailValid(), 'has-error': !isEmailValid() }" class="form-group has-feedback")
                 label(for="email" class="col-lg-2 control-label") Email
-                .col-lg-10
-                    input(id="email" class="form-control" type="text" pattern="[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" name="email" placeholder="Email" required="required")
-            +formGroupInput('facebook', 'facebook', 'Facebook', false)                 
-            +formGroupInput('twitter', 'twitter', 'Twitter', false)                 
-            +formGroupInput('linkedin', 'linkedin', 'Linkedin', false)                 
-            +formGroupInput('googleplus', 'googleplus', 'Googleplus', false)                            
-            .form-group
-                label(for="password" class="col-lg-2 control-label") Password
-                .col-lg-10
-                    input(id="password" class="form-control" type="password" name="password" placeholder="Password" required="required")
-            .form-group
-                label(for="confirm-password" class="col-lg-2 control-label") Confirm Password
-                .col-lg-10
-                    input(id="confirm-password" class="form-control" type="password" name="confirmPassword" placeholder="Confirm password" required="required")
+                .col-lg-10                    
+                    input(id="email" data-bind="textinput: email" class="form-control"  type="text" pattern="[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})" name="email" placeholder="Email" required="required")
+                    span(data-bind="css: { 'glyphicon-ok': isEmailValid(), 'glyphicon-remove': !isEmailValid() }" class="glyphicon form-control-feedback" aria-hidden="true")
+            +formGroupInput('text', 'facebook', 'facebook', 'Facebook', false)                 
+            +formGroupInput('text', 'twitter', 'twitter', 'Twitter', false)                 
+            +formGroupInput('text', 'linkedin', 'linkedin', 'Linkedin', false)                 
+            +formGroupInput('text', 'googleplus', 'googleplus', 'Googleplus', false)           
+            +formGroupInputValidated('password', 'password', 'password', 'Password', 'isPasswordValid', true)            
+            +formGroupInputValidated('password', 'confirm-password', 'confirmPassword', 'Confirm password', 'isConfirmPasswordValid', true)                        
             .form-group            
                 label(for='avatar' class="col-lg-2 control-label") Photo
                 .col-log-10

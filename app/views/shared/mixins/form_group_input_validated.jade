@@ -1,0 +1,10 @@
+mixin formGroupInputValidated(type, id, name, placeholder, validationFunction, required)
+    div(data-bind="css: { 'has-success' : #{validationFunction}(), 'has-error': !#{validationFunction}() }" class="form-group has-feedback")
+        label(for=id class="col-lg-2 control-label")= placeholder
+        .col-lg-10
+            if required
+                input(id=id data-bind="textinput: #{name}" class="form-control" type=type name=name placeholder=placeholder required="required")
+            else
+                input(id=id data-bind="textinput: #{name}" class="form-control" type=type name=name placeholder=placeholder)
+            span(data-bind="css: { 'glyphicon-ok': #{validationFunction}(), 'glyphicon-remove': !#{validationFunction}() }" class="glyphicon form-control-feedback" aria-hidden="true")        
+            
