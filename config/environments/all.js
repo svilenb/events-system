@@ -55,6 +55,7 @@ module.exports = function() {
         next();
     });
     this.use(function(req, res, next) {
+        // maybe use res.locals instead in order not to have the variable overriden
         if (req.user) {
             self.locals.currentUser = req.user;
         } else {
